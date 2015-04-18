@@ -35,8 +35,7 @@ def instr_in():
 	return ord(raw_input())
 
 def get_loops(code):
-	loops = {}	
-	stack = []
+	loops, stack = {}, []	
 
 	for i, x in enumerate(code):
 		if x == "[":
@@ -53,13 +52,8 @@ def get_loops(code):
 	
 	return loops
 	
-cells = [0] * 30000
-loops = {} 
-ptr   = 0
-
 def evaluate(code):
-	global cells, loops, ptr
-	loops = get_loops(code)
+	cells, loops, ptr = ([0] * 30000), get_loops(code), 0
 	i = 0	
 
 	while i < len(code):
